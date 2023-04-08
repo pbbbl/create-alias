@@ -1,25 +1,35 @@
-import fs from 'fs';
-import path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
 
-interface CreateBabelAliasesOptions {
-    aliases: Record<string, string>;
+
+export type Alias = Record<string, string>;
+export interface CreateAliasOptions {
+
     root?: string;
     baseUrl?: string;
     jsconfig?: string | string[];
     tsconfig?: string | string[];
 }
 
-function createBabelAliases({
-    aliases,
-    root = '.',
-    baseUrl = '.',
-    jsconfig,
-    tsconfig,
-}: CreateBabelAliasesOptions): Record<string, string[]> {
+function createAlias(
+    alias: Alias,
+    createAliasOptions: CreateAliasOptions = {
+        root: '.',
+        baseUrl: '.',
+        jsconfig: undefined,
+        tsconfig: undefined,
+    }): Alias {
+    const { root, baseUrl, jsconfig, tsconfig }: CreateAliasOptions = {
+        root: '.',
+        baseUrl: '.',
+        jsconfig: undefined,
+        tsconfig: undefined,
+        ...createAliasOptions,
+    }
     const paths: Record<string, string[]> = {};
-    Object.keys(aliases).forEach((alias) => {
-        const aliasPath = aliases[alias];
-        paths[`${alias}/*`] = [`${aliasPath}/*`];
+    Object.keys(alias).forEach((key) => {
+        const aliasPath = alias[key];
+        paths[`${key}/*`] = [`${aliasPath}/*`];
     });
     const jsconfigContent = {
         compilerOptions: {
@@ -40,8 +50,7 @@ function createBabelAliases({
         compilerOptions: {
             baseUrl,
             paths,
-        },
-        include: ['src/**/*'],
+        }
     };
     if (tsconfig) {
         if (Array.isArray(tsconfig)) {
@@ -52,7 +61,7 @@ function createBabelAliases({
             updateOrCreateConfigFile(path.resolve(root, tsconfig), tsconfigContent);
         }
     }
-    return paths;
+    return alias;
 }
 
 function updateOrCreateConfigFile(configPath: string, content: any) {
@@ -63,7 +72,7 @@ function updateOrCreateConfigFile(configPath: string, content: any) {
             ...content,
         };
         fs.writeFileSync(configPath, JSON.stringify(mergedConfig, null, 2));
-    } catch (error) {
+    } catch (error: any) {
         if (error.code === 'ENOENT') {
             fs.writeFileSync(configPath, JSON.stringify(content, null, 2));
         } else {
@@ -72,7 +81,4 @@ function updateOrCreateConfigFile(configPath: string, content: any) {
     }
 }
 
-export {
-    createBabelAliases,
-    createBabelAliases as default,
-};
+export { createAlias, createAlias as default };
