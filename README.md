@@ -1,1 +1,2 @@
-# My Awesome Greeter
+# Create Babel Alias + Generate and/or Update jsconfig.json / tsconfig.json
+
