@@ -1,12 +1,12 @@
 {
     "name": "@pbbbl/create-alias",
     "description": "Creates path aliases for your TS or JS project by auto-generating and/or auto-updating jsconfig or tsconfig files.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "scripts": {
         "build": "tsc",
-        "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+        "format": "prettier --write \"src/**/*.ts\"",
         "lint": "tslint -p tsconfig.json",
         "test": "jest --config jestconfig.json",
         "prepare": "npm run build",
