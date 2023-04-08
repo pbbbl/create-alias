@@ -1,5 +1,5 @@
 {
-    "name": "create-alias",
+    "name": "@pbbbl/create-alias",
     "description": "Creates path aliases for your TS or JS project by auto-generating and/or auto-updating jsconfig or tsconfig files.",
     "version": "1.0.0",
     "main": "lib/index.js",
