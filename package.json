@@ -13,16 +13,20 @@
         "prepublishOnly": "npm test && npm run lint",
         "preversion": "npm run lint",
         "version": "npm run format && git add -A src",
-        "postversion": "git push && git push --tags"
+        "postversion": "git push && git push --tags",
+        "v:patch": "npm version patch",
+        "v:minor": "npm version minor",
+        "v:major": "npm version major",
+        "pub": "npm publish --access public"
     },
     "repositiory": {
         "type": "git",
-        "url": "git+https://github.com/pbbbl/create-alias.git"
+        "url": "git+https://github.com/pbbbl/create-alias"
     },
     "bugs": {
-        "url": "https://github.com/pbbbl/create-alias.git/issues"
+        "url": "https://github.com/pbbbl/create-alias/issues"
     },
-    "homepage": "https://github.com/pbbbl/create-alias.git#readme",
+    "homepage": "https://github.com/pbbbl/create-alias/#readme",
     "author": "pbbblorg",
     "license": "ISC",
     "files": [
