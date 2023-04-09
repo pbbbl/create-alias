@@ -56,16 +56,16 @@ const alias = {
 type Alias = Record<string, string>;
 ```
 
-### `options` (optional)
+### `options` (required)
 
 An object to specify output files, behaviors.
 
-| Option     | Required/Optional | Default/Recommended Value      | Description                                                                                                        |
-| ---------- | ----------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `root`     | Required          | `__dirname` <br/>(recommended) | The root directory for your project. Or the full path to the directory where your tsconfig/jsconconfig files live. |
-| `baseUrl`  | Optional          | `"."` <br/>(default)           | The baseUrl for the compiler options in your config file.                                                          |
-| `jsconfig` | Optional          | `undefined` <br/>(default)     | The path or an array of paths to the jsconfig files to be created or updated.                                      |
-| `tsconfig` | Optional          | `undefined` <br/>(default)     | The path or an array of paths to the tsconfig files to be created or updated.                                      |
+| Option     | Required/Optional | Default/Recommended Value      | Description                                                                                                                          |
+| ---------- | ----------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `root`     | Required          | `__dirname` <br/>(recommended) | The root directory for your project, or the full path to the directory where your tsconfig/jsconfig files live/should be genereated. |
+| `baseUrl`  | Optional          | `"."` <br/>(default)           | Sets the `baseUrl` for the compiler options in your config file.                                                                     |
+| `jsconfig` | Optional          | `undefined` <br/>(default)     | The path or an array of paths to the jsconfig files to be created or updated.                                                        |
+| `tsconfig` | Optional          | `undefined` <br/>(default)     | The path or an array of paths to the tsconfig files to be created or updated.                                                        |
 
 #### Example
 ```js
